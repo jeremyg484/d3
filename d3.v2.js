@@ -1,4 +1,7 @@
-(function(){if (!Date.now) Date.now = function() {
+(function(d3, define) {
+define(function(){
+
+if (!Date.now) Date.now = function() {
   return +new Date;
 };
 try {
@@ -9380,4 +9383,12 @@ d3_time_scaleUTCMethods.year = function(extent, m) {
 d3.time.scale.utc = function() {
   return d3_time_scale(d3.scale.linear(), d3_time_scaleUTCMethods, d3_time_scaleUTCFormat);
 };
-})();
+return d3;
+});
+})({}, typeof define == 'function'
+  ? define
+  : function (factory) { 
+    this.d3 = factory();
+  }
+  // Boilerplate for AMD and browser global
+);
